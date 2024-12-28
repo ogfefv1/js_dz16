@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1</title>
+
+    <style>
+      body 
+      {
+        margin: 0;
+        height: 100vh;
+        background-image: url("fon.jpg");
+        background-size: cover;
+        background-position: center;
+        overflow: hidden;
+      }
+
+      .miach 
+      {
+        position: absolute;
+        width: 100px;
+        height: auto;
+        pointer-events: none;
+      }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <img src="miach.png" alt="miach" class="miach" />
+
+    <script>
+        $(document).ready(function() 
+        {
+            const $miach = $('.miach');
+            const miachWidth = $miach.width();
+            const miachHeight = $miach.height();
+
+            $(document).on('mousemove', function(event) 
+            {
+                let x = event.pageX - miachWidth / 2;
+                let y = event.pageY - miachHeight / 2;
+
+                const windowWidth = $(window).width();
+                const windowHeight = $(window).height();
+
+                if 
+                  (x < 0) x = 0;
+                if 
+                  (y < 0) y = 0;
+                if 
+                  (x + miachWidth > windowWidth) x = windowWidth - miachWidth;
+                if 
+                  (y + miachHeight > windowHeight) y = windowHeight - miachHeight;
+
+                $miach.css
+                (
+                  {
+                    left: x + 'px',
+                    top: y + 'px'
+                  }
+                );
+            }
+          );
+        }
+      );
+    </script>
+  </body>
+</html>
